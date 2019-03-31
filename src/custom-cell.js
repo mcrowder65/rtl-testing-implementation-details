@@ -5,6 +5,12 @@ class CellEditor extends React.Component {
   state = {
     value: this.props.value
   };
+
+  /**
+   * Ag-grid calls this function to get the final value once everything is updated.
+   * DO NOT DELETE
+   * @returns {String|Number} this.state.value
+   */
   getValue() {
     return this.state.value;
   }
@@ -13,15 +19,6 @@ class CellEditor extends React.Component {
     this.setState({ value: event.target.value });
   };
 
-  /**
-   * Function which gets called by ag grid so that the cell will popup
-   * properly when editing.
-   * THIS FUNCTION SHOULD ALWAYS RETURN TRUE
-   * @returns {boolean} true always
-   */
-  isPopup() {
-    return true;
-  }
   render() {
     return <TextField value={this.state.value} onChange={this.handleChange} />;
   }
